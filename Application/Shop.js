@@ -125,7 +125,7 @@ const OverlayPage = ({ visible, onClose, overlayText, avatarImage, link }) => {
   );
 };
 
-export default function App() {
+export default function Shop() {
   const [overlayVisible, setOverlayVisible] = useState(false);
   const [overlayText, setOverlayText] = useState('');
   const [overlayImage, setOverlayImage] = useState('');
@@ -144,7 +144,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Title />
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
         <Avatar />
         <View style={styles.categoryWrapper}>
@@ -167,7 +166,6 @@ export default function App() {
         </View>
       </ScrollView>
       <StatusBar style="auto" />
-      <Bottom />
       <OverlayPage visible={overlayVisible} onClose={closeOverlay} overlayText={overlayText} avatarImage={overlayImage} link={overlayLink}/>
     </View>
   );
