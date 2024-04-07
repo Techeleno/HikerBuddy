@@ -59,9 +59,9 @@ export default function App() {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen
-          name="Hiker Buddy"
+          name="Hiker Pal"
           component={HomeScreen}
-          options={{ headerTitleAlign: 'center', title: 'Hiker Buddy' }}
+          options={{ headerTitleAlign: 'center', title: 'Hiker Pal' }}
         />
         <Stack.Screen
           name="Shop"
@@ -73,11 +73,7 @@ export default function App() {
           component={ProfileScreen}
           options={{ headerTitleAlign: 'center' }}
         />
-        <Stack.Screen
-          name="Shop"
-          component={ShopScreen}
-          options={{ headerTitleAlign: 'center' }}
-        />
+  
         <Stack.Screen
           name="Tips"
           component={TipsScreen}
