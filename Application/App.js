@@ -1,6 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View, Button, TouchableOpacity, Image, TextInput } from 'react-native';
 import * as React from 'react';
+import { useState } from 'react';
 import {useNavigation, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { Button as ButtonTwo, Card, Header, Icon, Input } from '@rneui/themed';
@@ -12,48 +13,36 @@ const onPressShop = () => navigation.navigate('Shop');
 
 const users = [
   {
-    name: 'brynn',
-    avatar: 'https://uifaces.co/our-content/donated/1H_7AxP0.jpg',
-    title: 'title',
-    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
-    captions: 'captions',
+    //name: 'brynn',
+    //avatar: 'https://uifaces.co/our-content/donated/1H_7AxP0.jpg',
+    title: 'Grouse Grind Review',
+    img: 'https://i0.wp.com/besthikesbc.ca/wp-content/uploads/2023/08/DSC3554.jpg?w=2048&ssl=1',
+    captions: 'Reviewing the well-known "Grouse Grind" route as an experienced "grinder".',
   },
   {
-    name: 'thot leader',
-    avatar:
-      'https://images.pexels.com/photos/598745/pexels-photo-598745.jpeg?crop=faces&fit=crop&h=200&w=200&auto=compress&cs=tinysrgb',
-    title: 'title',
-    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
-    captions: 'captions',
+    //name: 'thot leader',
+    //avatar:
+    //  'https://images.pexels.com/photos/598745/pexels-photo-598745.jpeg?crop=faces&fit=crop&h=200&w=200&auto=compress&cs=tinysrgb',
+    title: 'Top 10 BC Hiking Routes',
+    img: 'https://www.insidevancouver.ca/wp-content/uploads/2019/06/Hiking-up-the-Chief_rgb_72.jpg',
+    captions: 'Ten Vancouver Hikes with Epic Views and Great Routes',
   },
+  
   {
-    name: 'jsa',
-    avatar: 'https://uifaces.co/our-content/donated/bUkmHPKs.jpg',
-    title: 'title',
-    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
-    captions: 'captions',
+    //name: 'talhaconcepts',
+    //avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
+    title: 'Hiking Gear Recommendations?',
+    img: 'https://www.rockymtnresorts.com/wp-content/uploads/2020/06/hiking-gear.jpg',
+    captions: 'Hi, new hiker here, can anyone give me some recommendations on what to bring for...',
   },
+ 
   {
-    name: 'talhaconcepts',
-    avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
-    title: 'title',
-    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
-    captions: 'captions',
-  },
-  {
-    name: 'andy vitale',
-    avatar: 'https://uifaces.co/our-content/donated/NY9hnAbp.jpg',
-    title: 'title',
-    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
-    captions: 'captions',
-  },
-  {
-    name: 'katy friedson',
-    avatar:
-      'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMTc1MTYzM15BMl5BanBnXkFtZTgwNzI5NjMwOTE@._V1_UY256_CR16,0,172,256_AL_.jpg',
-    title: 'title',
-    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
-    captions: 'captions',
+    //name: 'katy friedson',
+    //avatar:
+    //  'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMTc1MTYzM15BMl5BanBnXkFtZTgwNzI5NjMwOTE@._V1_UY256_CR16,0,172,256_AL_.jpg',
+    title: 'Scenery Appreciation',
+    img: 'https://www.bpmcdn.com/f/files/northdelta/import/2020-11/23441366_web1_201124-WCT-TenAdventures-5HikesVancouver_2.jpg;w=960',
+    captions: 'Nothing much, just enjoying the scenes of the journey :)',
   },
   ];
 
@@ -231,7 +220,7 @@ const CommunityScreen = ({navigation, route}) => {
         />
 
 
-  <ScrollView style={{ height: '70%' }}>
+  <ScrollView style={{ height: '85%' }}>
  
 
     <View styles={styles.container} >
@@ -239,7 +228,7 @@ const CommunityScreen = ({navigation, route}) => {
         return (
           
           <Card key={i}>
-      <Card.Title>{u.title}</Card.Title>
+      <Card.Title  >{u.title}</Card.Title>
       <Card.Divider />
       <Card.Image
         style={{ padding: 0 }}
@@ -274,7 +263,7 @@ const CommunityScreen = ({navigation, route}) => {
 
   </ScrollView>  
 
-  <ButtonTwo
+  {/* <ButtonTwo
   title="POST"
   icon={{
     name: 'plus',
@@ -300,7 +289,8 @@ const CommunityScreen = ({navigation, route}) => {
     //marginEnd: -30,
     //alignSelf: 'flex-end'
   }}
-  />
+  
+  /> */}
 
 
 
@@ -312,6 +302,9 @@ const CommunityScreen = ({navigation, route}) => {
 const PostScreen = ({navigation, route}) => {
   
 //const [value, onChangeText] = React.useState('Caption');
+const [text, setText] = useState('');
+const [title, setTitle] = useState('');
+
   return (
   
   <View>
@@ -319,6 +312,8 @@ const PostScreen = ({navigation, route}) => {
     <Input
       placeholder='Title'
       fontWeight='bold'
+      onChangeText={newText => setTitle(newText)}
+      defaultValue={title}
     />
 
     <Input
@@ -330,6 +325,8 @@ const PostScreen = ({navigation, route}) => {
         //maxLength={40}
         placeholder='Captions'
         //value={value}
+        onChangeText={newText => setText(newText)}
+        defaultValue={text}
         
       />
 
@@ -358,7 +355,14 @@ const PostScreen = ({navigation, route}) => {
       marginVertical: 20,
       //marginEnd: -30,
       alignSelf: 'center'
-    }}/>
+    }}
+    
+    // onPress={{
+    //   //TODO: take title and caption of input and add as another item to users
+
+      
+    // }}
+    />
 
 
   </View>)
