@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   },
   buttonGrad: {
     height: 50,
-    width: 180,
+    width: 150,
     borderRadius: 5,
     position: 'absolute',
     bottom: 5,
@@ -19,7 +19,7 @@ const styles = StyleSheet.create({
   },
   buttonParent: {
     height: 50,
-    width: 180,
+    width: 150,
     borderRadius: 10,
     backgroundColor: '#024e51',
   },
@@ -34,16 +34,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',
-  },
-  tinyLogo: {
-    width: 25,
-    height: 25,
-    marginLeft: 10, // Add some margin between the text and the image
-
   }
 });
 
-function SelectModeScreen({ buttonTitle, onPress, imageSource }) {
+function SelectModeScreenSmall({ buttonTitle, onPress}) {
     return (
       <View style={styles.container}>
         <TouchableOpacity onPress={onPress}>
@@ -54,10 +48,7 @@ function SelectModeScreen({ buttonTitle, onPress, imageSource }) {
             >
               <View style={styles.buttonTextContainer}>
                 <Text style={styles.boldText}>{buttonTitle}</Text>
-                <Image
-                style={styles.tinyLogo}
-                source={imageSource}
-                />
+              
               </View>
             </LinearGradient>
           </View>
@@ -66,4 +57,4 @@ function SelectModeScreen({ buttonTitle, onPress, imageSource }) {
     );
   }
 
-export default SelectModeScreen;
+export default SelectModeScreenSmall;

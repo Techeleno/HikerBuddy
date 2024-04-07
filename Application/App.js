@@ -186,10 +186,142 @@ const TipsScreen = ({ route }) => {
   );
 };
 
-const CommunityScreen = ({navigation}) => {
+const CommunityScreen = ({navigation, route}) => {
   return (
-    <Community/>);
-  
+  <SafeAreaProvider>
+  <View >
+    
+    {/*uncomment the following code to display header  */}
+  {/* <Header
+  //style={styles.container}
+  backgroundImageStyle={{}}
+  barStyle="default"
+  centerComponent={{
+    text: "Hiking Buddy",
+    style: { color: "#fff", 
+    fontSize: 20,
+    fontWeight: 'bold',
+    //textAlign:'center',
+    textAlignVertical: 'bottom'},
+  }}
+  centerContainerStyle={{}}
+  containerStyle={{ height:100}}
+  leftContainerStyle={{}}
+  linearGradientProps={{}}
+  placement="center"
+  rightContainerStyle={{}}
+  statusBarProps={{}}
+/> */}
+
+  <ButtonTwo
+          title="POST"
+          icon={{
+            name: 'plus',
+            type: 'font-awesome',
+            size: 15,
+            color: 'white',
+          }}
+          iconRight
+          iconContainerStyle={{ marginLeft: 20 }}
+          titleStyle={{ fontWeight: 'bold' }}
+          buttonStyle={{
+            backgroundColor: 'rgba(199, 43, 98, 1)',
+            borderColor: 'transparent',
+            width: "70%",
+            borderWidth: 0,
+            borderRadius: 30,
+            placement: 'right'
+          }}
+          containerStyle={{
+            width: "auto",
+            //placement: 'right',
+            marginVertical: 20,
+            marginEnd: -30,
+            alignSelf: 'flex-end'
+          }}
+
+          onPress={() =>
+            navigation.navigate('New Post', {name: 'Jane'})
+          }
+        />
+
+
+  <ScrollView style={{ height: '70%' }}>
+ 
+
+    <View styles={styles.container} >
+    {users.map((u, i) => {
+        return (
+          
+          <Card key={i}>
+      <Card.Title>{u.title}</Card.Title>
+      <Card.Divider />
+      <Card.Image
+        style={{ padding: 0 }}
+        source={{uri: u.img}}
+      />
+      <Text style={{ marginBottom: 10 }}>
+        {u.captions}
+      </Text>
+      <ButtonTwo
+        icon={
+          <Icon
+            name="arrow-forward"
+            color="#ffffff"
+            iconStyle={{ marginRight: 10 }}
+          />
+        }
+        buttonStyle={{
+          borderRadius: 0,
+          marginLeft: 0,
+          marginRight: 0,
+          marginBottom: 0,
+        }}
+        title="Details"
+        iconPosition='right'
+      />
+    </Card>
+        );
+      })}
+      </View>
+
+      
+
+  </ScrollView>  
+
+  <ButtonTwo
+  title="POST"
+  icon={{
+    name: 'plus',
+    type: 'font-awesome',
+    size: 15,
+    color: 'white',
+  }}
+  //iconRight
+  //iconContainerStyle={{ marginLeft: 20 }}
+  titleStyle={{ fontWeight: 'bold' }}
+  buttonStyle={{
+    backgroundColor: 'rgba(199, 43, 98, 1)',
+    borderColor: 'transparent',
+    //width: "70%",
+    borderWidth: 0,
+    borderRadius: 30,
+    //placement: 'right'
+  }}
+  containerStyle={{
+    //width: '',
+    //placement: 'right',
+    marginVertical: 20,
+    //marginEnd: -30,
+    //alignSelf: 'flex-end'
+  }}
+  />
+
+
+
+</View>
+</SafeAreaProvider>
+  );
 };
 
 const PostScreen = ({navigation, route}) => {

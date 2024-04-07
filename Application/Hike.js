@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View, Pressable, Image, Button, TouchableOpacity} from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Pressable, Image, Button, TouchableOpacity, Linking} from 'react-native';
 import * as React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SelectModeScreen from './Pick';
@@ -7,7 +7,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import {useNavigation, NavigationContainer} from '@react-navigation/native';
 import { Button as ButtonTwo, Card, Header, Icon } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Shop from './Shop';
+import SelectModeScreenSmall from './Pick copy';
 
 
 const Stack = createNativeStackNavigator();
@@ -82,7 +82,7 @@ const HomeScreen = () => {
       }
     ]}
 >
-<View style={{ flexDirection: 'column', alignItems: 'left' }}>
+<View style={{ flexDirection: 'column', alignItems: 'left'}}>
   <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15}}>
     <Image
       style={styles.circle}
@@ -115,9 +115,18 @@ const HomeScreen = () => {
 
 </Pressable>
 
-  <SelectModeScreen buttonTitle="Invite Friends"  
-    onPress={() => navigation.navigate('Community', { name: 'Jane' })}
-    imageSource={require('./assets/community.png')}/>
+<View style={styles.horizontalContainer}>
+<SelectModeScreenSmall
+  buttonTitle="Find Hikers"
+  onPress={() => Linking.openURL('https://example.com/find_hikers')}
+/>
+<SelectModeScreenSmall
+  buttonTitle="Invite Friends"
+  onPress={() => Linking.openURL('https://www.facebook.com/')}
+/>
+
+</View>
+
     
     </LinearGradient>
     
@@ -191,5 +200,11 @@ const styles = StyleSheet.create({
     fontSize: 22,
     fontWeight: 'bold',
     marginTop: 20
-  }
+  },
+  horizontalContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-around', // You can adjust the spacing as needed
+    alignItems: 'center', // Align items vertically
+    margin: 10, // Adjust the margin as needed
+  },
 });
