@@ -66,7 +66,7 @@ const HomeScreen = ({ navigation }) => {
       onPress={() => navigation.navigate('Tips', { name: 'Jane' })}
       imageSource={require('./assets/tips.png')}/>
       <SelectModeScreen buttonTitle="Community"  
-      onPress={() => navigation.navigate('Community Posts', { name: 'Jane' })}
+      onPress={() => navigation.navigate('Community', { name: 'Jane' })}
       imageSource={require('./assets/community.png')}/>
       </LinearGradient>
     </View>
