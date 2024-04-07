@@ -18,6 +18,13 @@ const Stack = createNativeStackNavigator();
 
 const users = [
   {
+    //name: 'talhaconcepts',
+    //avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
+    title: 'Arc\'teryx Winter Film Tour',
+    img: 'https://nowtoronto.com/wp-content/uploads/2024/01/arcteryx-toronto-winter-film-tour.png',
+    captions: 'Sharing uncommon journeys in the mountains, because everyone\'s path is different...',
+  },
+  {
     //name: 'brynn',
     //avatar: 'https://uifaces.co/our-content/donated/1H_7AxP0.jpg',
     title: 'Grouse Grind Review',
@@ -33,13 +40,7 @@ const users = [
     captions: 'Ten Vancouver Hikes with Epic Views and Great Routes',
   },
   
-  {
-    //name: 'talhaconcepts',
-    //avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
-    title: 'Hiking Gear Recommendations?',
-    img: 'https://www.rockymtnresorts.com/wp-content/uploads/2020/06/hiking-gear.jpg',
-    captions: 'Hi, new hiker here, can anyone give me some recommendations on what to bring for...',
-  },
+  
  
   {
     //name: 'katy friedson',
