@@ -1,9 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View, Button, TouchableOpacity, Image } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Button, TouchableOpacity, Image, TextInput } from 'react-native';
 import * as React from 'react';
 import {useNavigation, NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import { Button as ButtonTwo, Card, Header, Icon } from '@rneui/themed';
+import { Button as ButtonTwo, Card, Header, Icon, Input } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 
@@ -86,6 +86,12 @@ export default function App() {
             name="Community" 
             component={CommunityScreen}
             options={{headerTitleAlign: 'center', title: 'Community Posts'}} />
+
+          <Stack.Screen 
+          name="New Post" 
+          component={PostScreen}
+          options={{headerTitleAlign: 'center', title: 'New Post'}} />
+
         </Stack.Navigator>
       </NavigationContainer>
     // </SafeAreaProvider>
@@ -218,6 +224,10 @@ const CommunityScreen = ({navigation, route}) => {
             marginEnd: -30,
             alignSelf: 'flex-end'
           }}
+
+          onPress={() =>
+            navigation.navigate('New Post', {name: 'Jane'})
+          }
         />
 
 
@@ -298,6 +308,61 @@ const CommunityScreen = ({navigation, route}) => {
 </SafeAreaProvider>
   );
 };
+
+const PostScreen = ({navigation, route}) => {
+  
+//const [value, onChangeText] = React.useState('Caption');
+  return (
+  
+  <View>
+    
+    <Input
+      placeholder='Title'
+      fontWeight='bold'
+    />
+
+    <Input
+    
+        editable={true}
+        multiline={true}
+        numberOfLines={4}
+        height={270}
+        //maxLength={40}
+        placeholder='Captions'
+        //value={value}
+        
+      />
+
+    <ButtonTwo
+    title="POST"
+    icon={{
+      name: 'plus',
+      type: 'font-awesome',
+      size: 15,
+      color: 'white',
+    }}
+    iconRight
+    iconContainerStyle={{ marginLeft: 20 }}
+    titleStyle={{ fontWeight: 'bold' }}
+    buttonStyle={{
+      backgroundColor: 'rgba(199, 43, 98, 1)',
+      borderColor: 'transparent',
+      width: "100%",
+      borderWidth: 0,
+      borderRadius: 30,
+      placement: 'center'
+    }}
+    containerStyle={{
+      //width: "auto",
+      //placement: 'right',
+      marginVertical: 20,
+      //marginEnd: -30,
+      alignSelf: 'center'
+    }}/>
+
+
+  </View>)
+}
 
 const TipsScreen = ({navigation, route}) => {
   return <Text>This is {route.params.name}'s profile</Text>;
