@@ -7,9 +7,6 @@ import { LinearGradient } from 'expo-linear-gradient';
 import {useNavigation, NavigationContainer} from '@react-navigation/native';
 import { Button as ButtonTwo, Card, Header, Icon, Input } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
-import Shop from './Shop';
-import Hike from './Hike';
-import Community from './Community';
 
 
 const Stack = createNativeStackNavigator();
@@ -61,160 +58,16 @@ const users = [
   },
   ];
 
-export default function App() {
-  const [visible, setVisible] = React.useState(true);
-  const [index, setIndex] = React.useState(0);
+  export default function Community({ navigation }) {
+    return <CommunityScreen navigation={navigation} />;
+  }
+  
+  
 
-  return (
-    <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name="Hiker Buddy"
-          component={HomeScreen}
-          options={{ headerTitleAlign: 'center', title: 'Hiker Buddy' }}
-        />
-        <Stack.Screen
-          name="Shop"
-          component={ShopScreen}
-          options={{ headerTitleAlign: 'center' }}
-        />
-        <Stack.Screen
-          name="Tips"
-          component={TipsScreen}
-          options={{ headerTitleAlign: 'center', title: 'Tips' }}
-        />
-        <Stack.Screen
-          name="Community"
-          component={CommunityScreen}
-          options={{ headerTitleAlign: 'center', title: 'Community Posts' }}
-        />
-        <Stack.Screen
-          name="Hike"
-          component={HikeScreen}
-          options={{ headerTitleAlign: 'center', title: 'Plan Your Hike' }}
-        />
-        <Stack.Screen 
-          name="New Post" 
-          component={PostScreen}
-          options={{headerTitleAlign: 'center', title: 'New Post'}} />
-      </Stack.Navigator>
-    </NavigationContainer>
-  );
-}
-
-const HomeScreen = ({ navigation }) => {
-  return (
-    <View style={styles.container}>
-      <LinearGradient
-      colors={['#c9a5c3', '#37ab9f', '#40436e']}
-      style={styles.gradientBackground}
-    >
-      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <Pressable
-  onPress={() => navigation.navigate('Community', { name: 'Jane' })}
-  style={() => [
-    {
-      backgroundColor: '#0047AB',
-      width: 200,
-      height: 60,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 20,
-      marginTop: 10,
-      flexDirection: 'row',
-      marginRight: 100
-    }
-  ]}
->
-  <Image
-    style={styles.circle}
-    source={require('./assets/girl.png')}
-  />
-  <Text style={[styles.boldText, { color: 'white', marginLeft: 10 }]}>
-    {'Hiker\nLevel 1'}
-  </Text>
-</Pressable>
-<Image
-    style={styles.setting}
-    source={require('./assets/setting.png')}
-  />
-
-</View>
-  <Image
-    style={styles.avatar}
-    source={require('./assets/1.png')}
-  />
-       
-  <SelectModeScreen buttonTitle="Start Hike"  
-    onPress={() => navigation.navigate('Hike', { name: 'Jane' })}
-    imageSource={require('./assets/hike_icon.png')}/>
-
-  <SelectModeScreen buttonTitle="Shop"  
-    onPress={() => navigation.navigate('Shop', { name: 'Jane' })}
-    imageSource={require('./assets/shop.png')}/>
-      
-  <SelectModeScreen buttonTitle="Tips"  
-    onPress={() => navigation.navigate('Tips', { name: 'Jane' })}
-    imageSource={require('./assets/tips.png')}/>
-
-  <SelectModeScreen buttonTitle="Community"  
-    onPress={() => navigation.navigate('Community', { name: 'Jane' })}
-    imageSource={require('./assets/community.png')}/>
-    </LinearGradient>
-    </View>
-  );
-};
-
-const ShopScreen = ({ route }) => {
-  return (
-    <View style={styles.container}>
-      <Shop/>
-    </View>
-  );
-};
-
-const HikeScreen = ({ route }) => {
-  return (
-    <View style={styles.container}>
-      <Hike/>
-    </View>
-  );
-};
-
-const TipsScreen = ({ route }) => {
-  return (
-    <View style={styles.container}>
-      <Text>This is {route.params.name}'s Tips</Text>
-    </View>
-  );
-};
-
-const CommunityScreen = ({navigation, route}) => {
+const CommunityScreen = ({navigation}) => {
   return (
   <SafeAreaProvider>
   <View >
-    
-    {/*uncomment the following code to display header  */}
-  {/* <Header
-  //style={styles.container}
-  backgroundImageStyle={{}}
-  barStyle="default"
-  centerComponent={{
-    text: "Hiking Buddy",
-    style: { color: "#fff", 
-    fontSize: 20,
-    fontWeight: 'bold',
-    //textAlign:'center',
-    textAlignVertical: 'bottom'},
-  }}
-  centerContainerStyle={{}}
-  containerStyle={{ height:100}}
-  leftContainerStyle={{}}
-  linearGradientProps={{}}
-  placement="center"
-  rightContainerStyle={{}}
-  statusBarProps={{}}
-/> */}
 
   <ButtonTwo
           title="POST"
@@ -320,8 +173,6 @@ const CommunityScreen = ({navigation, route}) => {
   }}
   />
 
-
-
 </View>
 </SafeAreaProvider>
   );
@@ -329,58 +180,60 @@ const CommunityScreen = ({navigation, route}) => {
 
 const PostScreen = ({navigation, route}) => {
   
-//const [value, onChangeText] = React.useState('Caption');
-  return (
-  
-  <View>
-    
-    <Input
-      placeholder='Title'
-      fontWeight='bold'
-    />
-
-    <Input
-    
-        editable={true}
-        multiline={true}
-        numberOfLines={4}
-        height={270}
-        //maxLength={40}
-        placeholder='Captions'
-        //value={value}
+    //const [value, onChangeText] = React.useState('Caption');
+      return (
+      
+      <View>
         
-      />
+        <Input
+          placeholder='Title'
+          fontWeight='bold'
+        />
+    
+        <Input
+        
+            editable={true}
+            multiline={true}
+            numberOfLines={4}
+            height={270}
+            //maxLength={40}
+            placeholder='Captions'
+            //value={value}
+            
+          />
+    
+        <ButtonTwo
+        title="POST"
+        icon={{
+          name: 'plus',
+          type: 'font-awesome',
+          size: 15,
+          color: 'white',
+        }}
+        iconRight
+        iconContainerStyle={{ marginLeft: 20 }}
+        titleStyle={{ fontWeight: 'bold' }}
+        buttonStyle={{
+          backgroundColor: 'rgba(199, 43, 98, 1)',
+          borderColor: 'transparent',
+          width: "100%",
+          borderWidth: 0,
+          borderRadius: 30,
+          placement: 'center'
+        }}
+        containerStyle={{
+          //width: "auto",
+          //placement: 'right',
+          marginVertical: 20,
+          //marginEnd: -30,
+          alignSelf: 'center'
+        }}/>
+    
+    
+      </View>)
+    }
 
-    <ButtonTwo
-    title="POST"
-    icon={{
-      name: 'plus',
-      type: 'font-awesome',
-      size: 15,
-      color: 'white',
-    }}
-    iconRight
-    iconContainerStyle={{ marginLeft: 20 }}
-    titleStyle={{ fontWeight: 'bold' }}
-    buttonStyle={{
-      backgroundColor: 'rgba(199, 43, 98, 1)',
-      borderColor: 'transparent',
-      width: "100%",
-      borderWidth: 0,
-      borderRadius: 30,
-      placement: 'center'
-    }}
-    containerStyle={{
-      //width: "auto",
-      //placement: 'right',
-      marginVertical: 20,
-      //marginEnd: -30,
-      alignSelf: 'center'
-    }}/>
 
-
-  </View>)
-}
 
 const styles = StyleSheet.create({
   container: {
