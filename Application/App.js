@@ -9,6 +9,7 @@ import { Button as ButtonTwo, Card, Header, Icon, Input } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import Shop from './Shop';
 import Hike from './Hike';
+import Tips from './Tips';
 import Community from './Community';
 
 
@@ -62,6 +63,9 @@ const users = [
   ];
 
 export default function App() {
+  const [visible, setVisible] = React.useState(true);
+  const [index, setIndex] = React.useState(0);
+
   return (
     <NavigationContainer>
       <Stack.Navigator>
@@ -180,8 +184,8 @@ const HikeScreen = ({ route }) => {
 
 const TipsScreen = ({ route }) => {
   return (
-    <View style={styles.container}>
-      <Text>This is {route.params.name}'s Tips</Text>
+    <View>
+      <Tips/>
     </View>
   );
 };
