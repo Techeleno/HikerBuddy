@@ -4,6 +4,7 @@ import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import SelectModeScreen from './Pick';
+import { LinearGradient } from 'expo-linear-gradient';
 
 
 const Stack = createNativeStackNavigator();
@@ -40,82 +41,35 @@ export default function App() {
 const HomeScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <SelectModeScreen></SelectModeScreen>
+      <LinearGradient
+      colors={['#c9a5c3', '#37ab9f', '#40436e']}
+      style={styles.gradientBackground}
+    >
       <Image
         style={styles.avatar}
         source={require('./assets/character.png')}
       />
-     <Pressable
-  onPress={() => navigation.navigate('Community', { name: 'Jane' })}
-  title="Hike"
-  style={({ pressed }) => [
-    {
-      flexDirection: 'row', // Arrange items horizontally
-      backgroundColor: pressed ? 'rgb(210, 230, 255)' : '#0047AB',
-      width: 250,
-      height: 60,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 10,
-      borderWidth: 3,
-      borderColor: '#AEDEB8',
-      padding: 10
-    }
-  ]}
->
-  {({ pressed }) => (
-    <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-      <Text style={[styles.boldText, { color: pressed ? 'blue' : 'white', marginRight: 10 }]}>
-        {pressed ? 'Pressed!' : 'START HIKE'}
-      </Text>
-      <Image
-        style={styles.tinyLogo}
-        source={require('./assets/post.png')}
-      />
-    </View>
-  )}
-</Pressable>
+      
+       
+        <SelectModeScreen buttonTitle="Start Hike"  
+        onPress={() => navigation.navigate('Shop', { name: 'Jane' })}
+        imageSource={require('./assets/hike_icon.png')}/>
+       
 
-      <View style={styles.buttonRow}>
-        <CustomButton
-          title="START HIKE"
-          onPress={() => navigation.navigate('Shop', { name: 'Jane' })}
-        />
-        <CustomButton
-          title="SHOP"
-          onPress={() => navigation.navigate('Shop', { name: 'Jane' })}
-        />
-        <CustomButton
-          title="TIPS"
-          onPress={() => navigation.navigate('Tips', { name: 'Jane' })}
-        />
-      </View>
-      <CustomButton
-        title="COMMUNITY POSTS"
-        onPress={() => navigation.navigate('Community', { name: 'Jane' })}
-      />
-    </View>
-  );
-};
+    
 
-const CustomButton = ({ title, onPress }) => {
-  return (
-    <Pressable
-      onPress={onPress}
-      style={({ pressed }) => [
-        styles.button,
-        {
-          backgroundColor: pressed ? 'rgb(210, 230, 255)' : '#0047AB',
-          borderColor: '#AEDEB8',
-        },
-      ]}
-    >
-      {({ pressed }) => (
-        <Text style={[styles.boldText, { color: pressed ? 'blue' : 'white' }]}>
-          {pressed ? 'Pressed!' : title}
-        </Text>
-      )}
-    </Pressable>
+      <SelectModeScreen buttonTitle="Shop"  
+      onPress={() => navigation.navigate('Shop', { name: 'Jane' })}
+      imageSource={require('./assets/shop.png')}/>
+      
+      <SelectModeScreen buttonTitle="Tips"  
+      onPress={() => navigation.navigate('Tips', { name: 'Jane' })}
+      imageSource={require('./assets/tips.png')}/>
+      <SelectModeScreen buttonTitle="Community"  
+      onPress={() => navigation.navigate('Community Posts', { name: 'Jane' })}
+      imageSource={require('./assets/community.png')}/>
+      </LinearGradient>
+    </View>
   );
 };
 
@@ -150,10 +104,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  gradientBackground: {
+    flex: 1,
+    width: '100%',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
   buttonRow: {
     flexDirection: 'row',
-    justifyContent: 'space-around',
-    marginVertical: 10,
+    marginVertical: -10,
+  },
+  buttonMid: {
+    flexDirection: 'row',
+    marginVertical: 70,
   },
   button: {
     width: 100,
@@ -169,8 +132,9 @@ const styles = StyleSheet.create({
     height: 20,
   },
   avatar: {
-    width: 200,
-    height: 300,
+    width: 250,
+    height: 350,
+    marginTop: 20,
   },
   boldText: {
     fontFamily: 'CustomFont-Bold', 
