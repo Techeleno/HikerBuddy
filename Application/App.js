@@ -1,14 +1,14 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
-import { Button, Card, Header, Tab, TabView, Icon } from '@rneui/themed';
+import { Button, Card, Header, Icon } from '@rneui/themed';
 
 const users = [
   {
     name: 'brynn',
     avatar: 'https://uifaces.co/our-content/donated/1H_7AxP0.jpg',
     title: 'title',
-    img: '',
+    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
     captions: 'captions',
   },
   {
@@ -16,28 +16,28 @@ const users = [
     avatar:
       'https://images.pexels.com/photos/598745/pexels-photo-598745.jpeg?crop=faces&fit=crop&h=200&w=200&auto=compress&cs=tinysrgb',
     title: 'title',
-    img: '',
+    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
     captions: 'captions',
   },
   {
     name: 'jsa',
     avatar: 'https://uifaces.co/our-content/donated/bUkmHPKs.jpg',
     title: 'title',
-    img: '',
+    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
     captions: 'captions',
   },
   {
     name: 'talhaconcepts',
     avatar: 'https://randomuser.me/api/portraits/men/4.jpg',
     title: 'title',
-    img: '',
+    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
     captions: 'captions',
   },
   {
     name: 'andy vitale',
     avatar: 'https://uifaces.co/our-content/donated/NY9hnAbp.jpg',
     title: 'title',
-    img: '',
+    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
     captions: 'captions',
   },
   {
@@ -45,7 +45,7 @@ const users = [
     avatar:
       'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMTc1MTYzM15BMl5BanBnXkFtZTgwNzI5NjMwOTE@._V1_UY256_CR16,0,172,256_AL_.jpg',
     title: 'title',
-    img: '',
+    img: 'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
     captions: 'captions',
   },
   ];
@@ -56,23 +56,6 @@ export default function App() {
 
   return (
     
-
-    // <View style={styles.container}>
-    //   <Text>Open up App.js to start working on your app!</Text>
-    //   <StatusBar style="auto" />
-    //   <Button
-    //           title="To community"
-    //           buttonStyle={{
-    //             backgroundColor: 'rgba(78, 116, 289, 1)',
-    //             borderRadius: 3,
-    //           }}
-    //           containerStyle={{
-    //             width: 200,
-    //             marginHorizontal: 50,
-    //             marginVertical: 10,
-    //           }}
-    //         />
-    // </View>
 
     <View >
       <Header
@@ -125,7 +108,7 @@ export default function App() {
             />
 
 
-      <ScrollView>
+      <ScrollView style={{ height: '70%' }}>
         {/* <View styles={styles.container} >
         <Card>
           <Card.Title>CARD WITH DIVIDER</Card.Title>
@@ -154,10 +137,7 @@ export default function App() {
           <Card.Divider />
           <Card.Image
             style={{ padding: 0 }}
-            source={{
-              uri:
-                'https://awildgeographer.files.wordpress.com/2015/02/john_muir_glacier.jpg',
-            }}
+            source={{uri: u.img}}
           />
           <Text style={{ marginBottom: 10 }}>
             {u.captions}
@@ -165,7 +145,7 @@ export default function App() {
           <Button
             icon={
               <Icon
-                name="code"
+                name="arrow-forward"
                 color="#ffffff"
                 iconStyle={{ marginRight: 10 }}
               />
@@ -177,6 +157,7 @@ export default function App() {
               marginBottom: 0,
             }}
             title="Details"
+            iconPosition='right'
           />
         </Card>
             );
@@ -187,8 +168,33 @@ export default function App() {
 
       </ScrollView>  
 
-      <Button>
-          </Button>
+      <Button
+      title="POST"
+      icon={{
+        name: 'plus',
+        type: 'font-awesome',
+        size: 15,
+        color: 'white',
+      }}
+      //iconRight
+      //iconContainerStyle={{ marginLeft: 20 }}
+      titleStyle={{ fontWeight: 'bold' }}
+      buttonStyle={{
+        backgroundColor: 'rgba(199, 43, 98, 1)',
+        borderColor: 'transparent',
+        //width: "70%",
+        borderWidth: 0,
+        borderRadius: 30,
+        //placement: 'right'
+      }}
+      containerStyle={{
+        //width: '',
+        //placement: 'right',
+        marginVertical: 20,
+        //marginEnd: -30,
+        //alignSelf: 'flex-end'
+      }}
+      />
 
 
 
