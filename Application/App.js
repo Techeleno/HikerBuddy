@@ -1,15 +1,19 @@
 import { StatusBar } from 'expo-status-bar';
-import { ScrollView, StyleSheet, Text, View, Button, TouchableOpacity, Image, TextInput } from 'react-native';
+import { ScrollView, StyleSheet, Text, View, Pressable, Image, Button, TouchableOpacity} from 'react-native';
 import * as React from 'react';
-import { useState } from 'react';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import SelectModeScreen from './Pick';
+import { LinearGradient } from 'expo-linear-gradient';
 import {useNavigation, NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import { Button as ButtonTwo, Card, Header, Icon, Input } from '@rneui/themed';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import Shop from './Shop';
+import Hike from './Hike';
+import Tips from './Tips';
+import Community from './Community';
 
 
 const Stack = createNativeStackNavigator();
-const onPressShop = () => navigation.navigate('Shop');
 
 const users = [
   {
@@ -46,119 +50,133 @@ const users = [
   },
   ];
 
-
-
-
-
 export default function App() {
   const [visible, setVisible] = React.useState(true);
   const [index, setIndex] = React.useState(0);
 
   return (
-    // <SafeAreaProvider>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={HomeScreen}
-            options={{headerTitleAlign: 'center', title: 'Home'}}
-          />
-          <Stack.Screen 
-            name="Shop" 
-            component={ShopScreen}
-            options={{headerTitleAlign: 'center'}} />
-          <Stack.Screen 
-            name="Tips" 
-            component={TipsScreen}
-            options={{headerTitleAlign: 'center', title: 'Tips'}} />
-          <Stack.Screen 
-            name="Community" 
-            component={CommunityScreen}
-            options={{headerTitleAlign: 'center', title: 'Community Posts'}} />
-
-          <Stack.Screen 
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Hiker Buddy"
+          component={HomeScreen}
+          options={{ headerTitleAlign: 'center', title: 'Hiker Buddy' }}
+        />
+        <Stack.Screen
+          name="Shop"
+          component={ShopScreen}
+          options={{ headerTitleAlign: 'center' }}
+        />
+        <Stack.Screen
+          name="Tips"
+          component={TipsScreen}
+          options={{ headerTitleAlign: 'center', title: 'Tips' }}
+        />
+        <Stack.Screen
+          name="Community"
+          component={CommunityScreen}
+          options={{ headerTitleAlign: 'center', title: 'Community Posts' }}
+        />
+        <Stack.Screen
+          name="Hike"
+          component={HikeScreen}
+          options={{ headerTitleAlign: 'center', title: 'Plan Your Hike' }}
+        />
+        <Stack.Screen 
           name="New Post" 
           component={PostScreen}
           options={{headerTitleAlign: 'center', title: 'New Post'}} />
-
-        </Stack.Navigator>
-      </NavigationContainer>
-    // </SafeAreaProvider>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
-const HomeScreen = ({navigation}) => {
+const HomeScreen = ({ navigation }) => {
   return (
-    //BELOW IS BUTTONS
-    // <View >
-    //   <View style={{ flexDirection:"row", justifyContent: 'center', size: 'lg' }}>
-    //   <Button
-    //     title="Shop"
-    //     onPress={() =>
-    //       navigation.navigate('Shop', {name: 'Jane'})
-    //     }
-    //   />
-    //   <Button
-    //     title="Tips"
-    //     onPress={() =>
-    //       navigation.navigate('Tips', {name: 'Jane'})
-    //     }
-    //   />
-    //   </View>
-    //   <Button
-    //     title="Community Posts"
-    //     onPress={() =>
-    //       navigation.navigate('Community', {name: 'Jane'})
-    //     }
-    //   />
-    // </View>
+    <View style={styles.container}>
+      <LinearGradient
+      colors={['#c9a5c3', '#37ab9f', '#40436e']}
+      style={styles.gradientBackground}
+    >
+      <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+      <Pressable
+  onPress={() => navigation.navigate('Community', { name: 'Jane' })}
+  style={() => [
+    {
+      backgroundColor: '#0047AB',
+      width: 200,
+      height: 60,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 20,
+      marginTop: 10,
+      flexDirection: 'row',
+      marginRight: 100
+    }
+  ]}
+>
+  <Image
+    style={styles.circle}
+    source={require('./assets/girl.png')}
+  />
+  <Text style={[styles.boldText, { color: 'white', marginLeft: 10 }]}>
+    {'Hiker\nLevel 1'}
+  </Text>
+</Pressable>
+<Image
+    style={styles.setting}
+    source={require('./assets/setting.png')}
+  />
 
-    //BELOW IS TOUCHABLE OPACITY
-    // 'space-between', marginHorizontal: 500,
-    <View >
-      <View style={{ flexDirection:"row", justifyContent: 'center', size: 'lg' }}>
-      {/* <TouchableOpacity style={styles.button} 
-      onPress={onPressShop}
-      >
-        <Text>Shop</Text>
-      </TouchableOpacity> */}
-      <Button
-        title="Shop"
-        onPress={() =>
-          navigation.navigate('Shop', {name: 'Jane'})
-        }
-      />
-      <Button
-        title="Tips"
-        onPress={() =>
-          navigation.navigate('Tips', {name: 'Jane'})
-        }
-      />
-      </View>
-      <View style={{ flexDirection:"row", justifyContent: 'center', size: 'lg' }}>
-      <Button
-        title="Community Posts"
-        onPress={() =>
-          navigation.navigate('Community', {name: 'Jane'})
-        }
-      />
-      </View>
+</View>
+  <Image
+    style={styles.avatar}
+    source={require('./assets/1.png')}
+  />
+       
+  <SelectModeScreen buttonTitle="Start Hike"  
+    onPress={() => navigation.navigate('Hike', { name: 'Jane' })}
+    imageSource={require('./assets/hike_icon.png')}/>
+
+  <SelectModeScreen buttonTitle="Shop"  
+    onPress={() => navigation.navigate('Shop', { name: 'Jane' })}
+    imageSource={require('./assets/shop.png')}/>
+      
+  <SelectModeScreen buttonTitle="Tips"  
+    onPress={() => navigation.navigate('Tips', { name: 'Jane' })}
+    imageSource={require('./assets/tips.png')}/>
+
+  <SelectModeScreen buttonTitle="Community"  
+    onPress={() => navigation.navigate('Community', { name: 'Jane' })}
+    imageSource={require('./assets/community.png')}/>
+    </LinearGradient>
     </View>
-
-
-    
   );
 };
 
-const ProfileScreen = ({navigation, route}) => {
-  return <Text>This is {route.params.name}'s profile</Text>;
+const ShopScreen = ({ route }) => {
+  return (
+    <View style={styles.container}>
+      <Shop/>
+    </View>
+  );
 };
 
+const HikeScreen = ({ route }) => {
+  return (
+    <View style={styles.container}>
+      <Hike/>
+    </View>
+  );
+};
 
-
-
-
-
+const TipsScreen = ({ route }) => {
+  return (
+    <View>
+      <Tips/>
+    </View>
+  );
+};
 
 const CommunityScreen = ({navigation, route}) => {
   return (
@@ -302,9 +320,6 @@ const CommunityScreen = ({navigation, route}) => {
 const PostScreen = ({navigation, route}) => {
   
 //const [value, onChangeText] = React.useState('Caption');
-const [text, setText] = useState('');
-const [title, setTitle] = useState('');
-
   return (
   
   <View>
@@ -312,8 +327,6 @@ const [title, setTitle] = useState('');
     <Input
       placeholder='Title'
       fontWeight='bold'
-      onChangeText={newText => setTitle(newText)}
-      defaultValue={title}
     />
 
     <Input
@@ -325,8 +338,6 @@ const [title, setTitle] = useState('');
         //maxLength={40}
         placeholder='Captions'
         //value={value}
-        onChangeText={newText => setText(newText)}
-        defaultValue={text}
         
       />
 
@@ -355,62 +366,72 @@ const [title, setTitle] = useState('');
       marginVertical: 20,
       //marginEnd: -30,
       alignSelf: 'center'
-    }}
-    
-    // onPress={{
-    //   //TODO: take title and caption of input and add as another item to users
-
-      
-    // }}
-    />
+    }}/>
 
 
   </View>)
 }
 
-const TipsScreen = ({navigation, route}) => {
-  return <Text>This is {route.params.name}'s profile</Text>;
-};
-
-const ShopScreen = ({navigation, route}) => {
-  return <Text>This is {route.params.name}'s profile</Text>;
-};
-
-// export default function App() {
-//   return (
-//     <View style={styles.container}>
-//       <Text>Open up App.js to start working on your app!</Text>
-//       <StatusBar style="auto" />
-//     </View>
-//   );
-// }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#AEDEB8',
     alignItems: 'center',
     justifyContent: 'center',
   },
-  button: {
+  gradientBackground: {
+    flex: 1,
+    width: '100%',
     alignItems: 'center',
-    backgroundColor: '#DDDDDD',
+    justifyContent: 'center',
+  },
+  buttonRow: {
+    flexDirection: 'row',
+    marginVertical: -10,
+  },
+  buttonMid: {
+    flexDirection: 'row',
+    marginVertical: 70,
+  },
+  button: {
+    width: 100,
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    borderWidth: 3,
     padding: 10,
   },
-  fonts: {
-    marginBottom: 8,
+  tinyLogo: {
+    width: 20,
+    height: 20,
   },
-  user: {
-    flexDirection: 'row',
-    marginBottom: 6,
+  avatar: {
+    width: 250,
+    height: 350,
+    marginTop: 20,
   },
-  image: {
-    width: 30,
-    height: 30,
-    marginRight: 10,
+  boldText: {
+    fontFamily: 'CustomFont-Bold', 
+    fontSize: 18,
+    fontWeight: 'bold',
   },
-  name: {
-    fontSize: 16,
-    marginTop: 5,
-  }
+  circle: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)', // Adjust the color and opacity as needed
+    borderRadius: 50,
+    alignItems: 'left',
+    marginRight: 25,
+    marginLeft: -40
+  },
+  setting: {
+    width: 50,
+    height: 50,
+    backgroundColor: 'rgba(255, 255, 255, 0.5)', // Adjust the color and opacity as needed
+    borderRadius: 50,
+    alignItems: 'left',
+    marginRight: 5,
+    marginLeft: -30
+  },
 });
