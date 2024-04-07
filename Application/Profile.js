@@ -12,7 +12,7 @@ import SelectModeScreenSmall from './Pick copy';
 
 const Stack = createNativeStackNavigator();
 
-export default function Hike() {
+export default function Profile() {
   
   return HomeScreen();
 }
@@ -28,14 +28,13 @@ const HomeScreen = () => {
       style={() => [
       {
       backgroundColor: '#0047AB',
-      width: 200,
+      width: 400,
       height: 60,
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 20,
       marginTop: 10,
       flexDirection: 'row',
-      marginRight: 100
       }
     ]}
 >
@@ -48,105 +47,61 @@ const HomeScreen = () => {
   </Text>
   
 </Pressable>
-<Image
-    style={styles.setting}
-    source={require('./assets/setting.png')}
-  />
 
 </View>
-
+  
   <Text style={[styles.heading, { color: 'white', marginTop: 1 }]}>
   {""}
   </Text>
-  <SelectModeScreen buttonTitle="Location"  
-    onPress={() => Linking.openURL('https://www.google.com/maps/search/hikes+around+me/@49.2148409,-123.036454,13z/data=!3m1!4b1?entry=ttu')}
-    imageSource={require('./assets/pin.png')}/>
+  <Pressable
+  style={({ pressed }) => [
+    {
+      width: 300,
+      height: 30,
+      borderRadius: 20,
+      overflow: 'hidden', // Ensure children don't overflow the parent
+      backgroundColor: '#0047AB' 
+    }
+  ]}
+>
+  <View style={styles.progressBar}></View>
+  <Text style={[styles.boldText, { color: 'white', textAlign: "center"}]}>
+    {"150 EXP needed"}
+  </Text>
+</Pressable>
+<Text style={[styles.heading, { color: 'white', marginLeft: 10 }]}>
+  {"ACHIEVEMENTS"}
+  </Text>
+  <Text style={[styles.boldText, { color: 'white', marginLeft: 10 }]}>
+  {"\nCONQUERED THE GROUSE GRIND"}
+  </Text>
     <Image
     style={styles.avatar}
     source={require('./assets/GG.png')}
   />
-
-
-<Pressable
-      style={() => [
-      {
-      backgroundColor: '#0047AB',
-      width: 300,
-      height: 30,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 20,
-      flexDirection: 'row',
-      }
-    ]}
->
 <Text style={[styles.boldText, { color: 'white', marginLeft: 10 }]}>
-  {"+ 150 Hiker Exp, + 50 Coins"}
+  {"\nREACH LEVEL 1"}
   </Text>
-
-</Pressable>
-
-
-
-
-    <Text style={[styles.heading, { color: 'white', marginLeft: 10 }]}>
-  {"CURRENT PARTY"}
+<Image
+    style={styles.avatar}
+    source={require('./assets/ach-1.png')}
+  />
+<Text style={[styles.boldText, { color: 'white', marginLeft: 10 }]}>
+  {"\nCONQUERED BC PARK TRAILS"}
   </Text>
+<Image
+    style={styles.avatar}
+    source={require('./assets/seymour.png')}
+  />
 
-  <Pressable
-      style={() => [
-      {
-      backgroundColor: '#0047AB',
-      width: 300,
-      height: 240,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 20,
-      marginTop: 10,
-      flexDirection: 'row',
-      }
-    ]}
->
-<View style={{ flexDirection: 'column', alignItems: 'left'}}>
-  <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15}}>
-    <Image
-      style={styles.circle}
-      source={require('./assets/girl.png')}
-    />
-    <Text style={[styles.boldText, { color: 'white'}]}>
-      {'Hiker\nLevel 1'}
-    </Text>
-  </View>
-  <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15}}>
-    <Image
-      style={styles.circle}
-      source={require('./assets/icon.png')}
-    />
-    <Text style={[styles.boldText, { color: 'white'}]}>
-      {'Guide\nLevel 99'}
-    </Text>
-  </View>
-  <View style={{ flexDirection: 'row', alignItems: 'center' }}>
-    <Image
-      style={styles.circle}
-      source={require('./assets/add_hiker.png')}
-    />
-    <Text style={[styles.boldText, { color: 'white'}]}>
-      {'Add Hiker'}
-    </Text>
-  </View>
-</View>
-
-
-</Pressable>
 
 <View style={styles.horizontalContainer}>
 <SelectModeScreenSmall
-  buttonTitle="Find Hikers"
-  onPress={() => Linking.openURL('https://www.facebook.com/groups/808903849314933/')}
+  buttonTitle="About"
+  onPress={() => Linking.openURL('https://devpost.com/software/hiker-pal')}
 />
 <SelectModeScreenSmall
-  buttonTitle="Invite Friends"
+  buttonTitle="Share"
   onPress={() => Linking.openURL('https://www.facebook.com/')}
 />
 
@@ -232,6 +187,14 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Align items vertically
     margin: 10, // Adjust the margin as needed
   },
+  progressBar: {
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    height: '100%',
+    width: '50%', // Adjust this value to control the progress
+    backgroundColor: '#a3afc9', // Change this to the color of the progress bar
+  }
    
  
 });

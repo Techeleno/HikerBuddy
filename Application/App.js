@@ -11,6 +11,7 @@ import Shop from './Shop';
 import Hike from './Hike';
 import Tips from './Tips';
 import Community from './Community';
+import Profile from './Profile';
 
 
 const Stack = createNativeStackNavigator();
@@ -63,8 +64,8 @@ export default function App() {
           options={{ headerTitleAlign: 'center', title: 'Hiker Buddy' }}
         />
         <Stack.Screen
-          name="Shop"
-          component={ShopScreen}
+          name="Profile"
+          component={ProfileScreen}
           options={{ headerTitleAlign: 'center' }}
         />
         <Stack.Screen
@@ -100,7 +101,7 @@ const HomeScreen = ({ navigation }) => {
     >
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       <Pressable
-  onPress={() => navigation.navigate('Community', { name: 'Jane' })}
+  onPress={() => navigation.navigate('Profile', { name: 'Jane' })}
   style={() => [
     {
       backgroundColor: '#0047AB',
@@ -153,6 +154,15 @@ const HomeScreen = ({ navigation }) => {
     </View>
   );
 };
+
+const ProfileScreen = ({ route }) => {
+  return (
+    <View style={styles.container}>
+      <Profile/>
+    </View>
+  );
+};
+
 
 const ShopScreen = ({ route }) => {
   return (
