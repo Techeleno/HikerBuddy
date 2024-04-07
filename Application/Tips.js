@@ -116,7 +116,7 @@ export default function Tips() {
             />
 
 
-      <ScrollView style={{ height: '70%' }}>
+      <ScrollView style={{ height: '85%' }}>
         {/* <View styles={styles.container} >
         <Card>
           <Card.Title>CARD WITH DIVIDER</Card.Title>
@@ -176,7 +176,7 @@ export default function Tips() {
 
       </ScrollView>  
 
-      <Button
+      {/* <Button
       title="POST"
       icon={{
         name: 'plus',
@@ -203,7 +203,7 @@ export default function Tips() {
         //alignSelf: 'flex-end'
       }}
       />
-
+ */}
 
 
 
