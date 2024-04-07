@@ -181,8 +181,12 @@ const TipsScreen = ({ route }) => {
 const CommunityScreen = ({navigation, route}) => {
   return (
   <SafeAreaProvider>
+    <LinearGradient
+      colors={['#c9a5c3', '#37ab9f', '#40436e']}
+      style={styles.gradientBackground}
+    >
   <View >
-    
+  
     {/*uncomment the following code to display header  */}
   {/* <Header
   //style={styles.container}
@@ -205,6 +209,7 @@ const CommunityScreen = ({navigation, route}) => {
   statusBarProps={{}}
 /> */}
 
+
   <ButtonTwo
           title="POST"
           icon={{
@@ -217,7 +222,7 @@ const CommunityScreen = ({navigation, route}) => {
           iconContainerStyle={{ marginLeft: 20 }}
           titleStyle={{ fontWeight: 'bold' }}
           buttonStyle={{
-            backgroundColor: 'rgba(199, 43, 98, 1)',
+            backgroundColor: '#37ab9f',
             borderColor: 'transparent',
             width: "70%",
             borderWidth: 0,
@@ -239,8 +244,7 @@ const CommunityScreen = ({navigation, route}) => {
 
 
   <ScrollView style={{ height: '85%' }}>
- 
-
+  
     <View styles={styles.container} >
     {users.map((u, i) => {
         return (
@@ -271,6 +275,12 @@ const CommunityScreen = ({navigation, route}) => {
         }}
         title="Details"
         iconPosition='right'
+        ViewComponent={LinearGradient} // Don't forget this!
+  linearGradientProps={{
+    colors: ['#37ab9f', '#AEDEB8'],
+    start: { x: 0, y: 0.5 },
+    end: { x: 1, y: 0.5 },
+  }}
       />
     </Card>
         );
@@ -313,6 +323,7 @@ const CommunityScreen = ({navigation, route}) => {
 
 
 </View>
+</LinearGradient>
 </SafeAreaProvider>
   );
 };
@@ -323,6 +334,7 @@ const PostScreen = ({navigation, route}) => {
   return (
   
   <View>
+    
     
     <Input
       placeholder='Title'
@@ -353,7 +365,7 @@ const PostScreen = ({navigation, route}) => {
     iconContainerStyle={{ marginLeft: 20 }}
     titleStyle={{ fontWeight: 'bold' }}
     buttonStyle={{
-      backgroundColor: 'rgba(199, 43, 98, 1)',
+      backgroundColor: '#37ab9f',
       borderColor: 'transparent',
       width: "100%",
       borderWidth: 0,
@@ -367,7 +379,7 @@ const PostScreen = ({navigation, route}) => {
       //marginEnd: -30,
       alignSelf: 'center'
     }}/>
-
+    
 
   </View>)
 }
