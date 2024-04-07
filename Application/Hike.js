@@ -26,7 +26,6 @@ const HomeScreen = () => {
     >
       <View style={{ flexDirection: 'row', alignItems: 'center' }}>
       <Pressable
-      onPress={() => navigation.navigate('Community', { name: 'Jane' })}
       style={() => [
       {
       backgroundColor: '#0047AB',
@@ -43,7 +42,7 @@ const HomeScreen = () => {
 >
   <Image
     style={styles.circle}
-    source={require('./assets/icon.png')}
+    source={require('./assets/girl.png')}
   />
   <Text style={[styles.boldText, { color: 'white', marginTop: 10 }]}>
     {'Hiker\nLevel 1'}
@@ -57,14 +56,41 @@ const HomeScreen = () => {
 
 </View>
 
-  <Text style={[styles.heading, { color: 'white', marginLeft: 10 }]}>
-  {"HIKE PLAN"}
+  <Text style={[styles.heading, { color: 'white', marginTop: 1 }]}>
+  {""}
   </Text>
   <SelectModeScreen buttonTitle="Location"  
-    onPress={() => navigation.navigate('Hike', { name: 'Jane' })}
-    imageSource={require('./assets/hike_icon.png')}/>
+    onPress={() => Linking.openURL('https://www.google.com/maps/search/hikes+around+me/@49.2148409,-123.036454,13z/data=!3m1!4b1?entry=ttu')}
+    imageSource={require('./assets/pin.png')}/>
+    <Image
+    style={styles.avatar}
+    source={require('./assets/GG.png')}
+  />
 
-  <Text style={[styles.heading, { color: 'white', marginLeft: 10 }]}>
+
+<Pressable
+      style={() => [
+      {
+      backgroundColor: '#0047AB',
+      width: 300,
+      height: 30,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 20,
+      flexDirection: 'row',
+      }
+    ]}
+>
+<Text style={[styles.boldText, { color: 'white', marginLeft: 10 }]}>
+  {"+ 150 Hiker Exp, + 50 Coins"}
+  </Text>
+
+</Pressable>
+
+
+
+
+    <Text style={[styles.heading, { color: 'white', marginLeft: 10 }]}>
   {"CURRENT PARTY"}
   </Text>
 
@@ -86,7 +112,7 @@ const HomeScreen = () => {
   <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15}}>
     <Image
       style={styles.circle}
-      source={require('./assets/icon.png')}
+      source={require('./assets/girl.png')}
     />
     <Text style={[styles.boldText, { color: 'white'}]}>
       {'Hiker\nLevel 1'}
@@ -95,7 +121,7 @@ const HomeScreen = () => {
   <View style={{ flexDirection: 'row', alignItems: 'center', marginBottom: 15}}>
     <Image
       style={styles.circle}
-      source={require('./assets/girl.png')}
+      source={require('./assets/icon.png')}
     />
     <Text style={[styles.boldText, { color: 'white'}]}>
       {'Guide\nLevel 99'}
@@ -118,7 +144,7 @@ const HomeScreen = () => {
 <View style={styles.horizontalContainer}>
 <SelectModeScreenSmall
   buttonTitle="Find Hikers"
-  onPress={() => Linking.openURL('https://example.com/find_hikers')}
+  onPress={() => Linking.openURL('https://www.facebook.com/groups/808903849314933/')}
 />
 <SelectModeScreenSmall
   buttonTitle="Invite Friends"
@@ -169,8 +195,8 @@ const styles = StyleSheet.create({
   },
   avatar: {
     width: 250,
-    height: 350,
-    marginTop: 20,
+    height: 100,
+    borderRadius: 10,
   },
   boldText: {
     fontFamily: 'CustomFont-Bold', 
@@ -207,4 +233,6 @@ const styles = StyleSheet.create({
     alignItems: 'center', // Align items vertically
     margin: 10, // Adjust the margin as needed
   },
+   
+ 
 });

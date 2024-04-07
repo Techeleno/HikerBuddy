@@ -125,7 +125,7 @@ const HomeScreen = ({ navigation }) => {
 >
   <Image
     style={styles.circle}
-    source={require('./assets/icon.png')}
+    source={require('./assets/girl.png')}
   />
   <Text style={[styles.boldText, { color: 'white', marginLeft: 10 }]}>
     {'Hiker\nLevel 1'}
@@ -139,7 +139,7 @@ const HomeScreen = ({ navigation }) => {
 </View>
   <Image
     style={styles.avatar}
-    source={require('./assets/character.png')}
+    source={require('./assets/1.png')}
   />
        
   <SelectModeScreen buttonTitle="Start Hike"  
