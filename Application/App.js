@@ -74,6 +74,11 @@ export default function App() {
           options={{ headerTitleAlign: 'center' }}
         />
         <Stack.Screen
+          name="Shop"
+          component={ShopScreen}
+          options={{ headerTitleAlign: 'center' }}
+        />
+        <Stack.Screen
           name="Tips"
           component={TipsScreen}
           options={{ headerTitleAlign: 'center', title: 'Tips' }}
@@ -145,7 +150,7 @@ const HomeScreen = ({ navigation }) => {
     imageSource={require('./assets/hike_icon.png')}/>
 
   <SelectModeScreen buttonTitle="Shop"  
-    onPress={() => navigation.navigate('Shop', { name: 'Jane' })}
+    onPress={() => navigation.navigate('Shop')}
     imageSource={require('./assets/shop.png')}/>
       
   <SelectModeScreen buttonTitle="Tips"  
