@@ -64,6 +64,11 @@ export default function App() {
           options={{ headerTitleAlign: 'center', title: 'Hiker Buddy' }}
         />
         <Stack.Screen
+          name="Shop"
+          component={ShopScreen}
+          options={{ headerTitleAlign: 'center', title: 'Shop' }}
+        />
+        <Stack.Screen
           name="Profile"
           component={ProfileScreen}
           options={{ headerTitleAlign: 'center' }}
@@ -434,7 +439,6 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
   boldText: {
-    fontFamily: 'CustomFont-Bold', 
     fontSize: 18,
     fontWeight: 'bold',
   },

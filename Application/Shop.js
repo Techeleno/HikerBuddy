@@ -292,8 +292,6 @@ const styles = StyleSheet.create({
     justifyContent: 'top',
   },
   exit: { 
-    justifyContent: 'top', 
-    alignContent: 'left',
     fontWeight: 'bold',
     fontSize: 50,
   },

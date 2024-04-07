@@ -29,7 +29,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center', // Center items horizontally
   },
   boldText: {
-    fontFamily: 'CustomFont-Bold', 
     fontSize: 18,
     fontWeight: 'bold',
     color: 'white',

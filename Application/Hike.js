@@ -198,7 +198,6 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   boldText: {
-    fontFamily: 'CustomFont-Bold', 
     fontSize: 18,
     fontWeight: 'bold',
   },
@@ -221,7 +220,6 @@ const styles = StyleSheet.create({
     marginLeft: -30
   },
   heading: {
-    fontFamily: 'CustomFont-Bold', 
     fontSize: 22,
     fontWeight: 'bold',
     marginTop: 20
