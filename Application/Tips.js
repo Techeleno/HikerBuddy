@@ -10,6 +10,8 @@ import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { ScrollView, StyleSheet, Text, View, Image } from 'react-native';
 import { Button, Card, Header, Icon } from '@rneui/themed';
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 const users = [
   {
@@ -63,7 +65,9 @@ export default function Tips() {
   const [index, setIndex] = React.useState(0);
 
   return (
-    
+    <LinearGradient
+    colors={['#c9a5c3', '#37ab9f', '#40436e']}
+    style={styles.gradientBackground}>
 
     <View >
       {/* <Header
@@ -99,7 +103,7 @@ export default function Tips() {
               iconContainerStyle={{ marginLeft: 20 }}
               titleStyle={{ fontWeight: 'bold' }}
               buttonStyle={{
-                backgroundColor: 'rgba(199, 43, 98, 1)',
+                backgroundColor: '#37ab9f',
                 borderColor: 'transparent',
                 width: "70%",
                 borderWidth: 0,
@@ -113,10 +117,11 @@ export default function Tips() {
                 marginEnd: -30,
                 alignSelf: 'flex-end'
               }}
+              
             />
 
 
-      <ScrollView style={{ height: '85%' }}>
+      <ScrollView style={{ height: '90%' }}>
         {/* <View styles={styles.container} >
         <Card>
           <Card.Title>CARD WITH DIVIDER</Card.Title>
@@ -166,6 +171,11 @@ export default function Tips() {
             }}
             title="Details"
             iconPosition='right'
+            ViewComponent={LinearGradient} // Don't forget this!
+              linearGradientProps={{
+                colors: ['#37ab9f', '#AEDEB8'],
+                start: { x: 0, y: 0.5 },
+                end: { x: 1, y: 0.5 },}}
           />
         </Card>
             );
@@ -176,34 +186,8 @@ export default function Tips() {
 
       </ScrollView>  
 
-      {/* <Button
-      title="POST"
-      icon={{
-        name: 'plus',
-        type: 'font-awesome',
-        size: 15,
-        color: 'white',
-      }}
-      //iconRight
-      //iconContainerStyle={{ marginLeft: 20 }}
-      titleStyle={{ fontWeight: 'bold' }}
-      buttonStyle={{
-        backgroundColor: 'rgba(199, 43, 98, 1)',
-        borderColor: 'transparent',
-        //width: "70%",
-        borderWidth: 0,
-        borderRadius: 30,
-        //placement: 'right'
-      }}
-      containerStyle={{
-        //width: '',
-        //placement: 'right',
-        marginVertical: 20,
-        //marginEnd: -30,
-        //alignSelf: 'flex-end'
-      }}
-      />
- */}
+      
+
 
 
 
@@ -251,7 +235,7 @@ export default function Tips() {
 
     </View>
     
-
+    </LinearGradient>
     
   );
 }
